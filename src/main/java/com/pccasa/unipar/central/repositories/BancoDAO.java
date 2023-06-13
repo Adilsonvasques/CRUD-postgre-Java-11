@@ -37,12 +37,6 @@ public class BancoDAO {
                 Banco banco = new Banco();
                 banco.setId(rs.getInt("ID"));
                 banco.setNome(rs.getString("NOME"));
-                // Recuperar a Agencia correspondente pelo ID
-                int agenciaId = rs.getInt("AGENCIA_ID");
-                AgenciaDAO agenciaDAO = new AgenciaDAO();
-                Agencia agencia = agenciaDAO.findById(agenciaId);
-                banco.setAgencia(agencia);
-
                 retorno.add(banco);
             }
         } finally {
@@ -76,11 +70,6 @@ public class BancoDAO {
                 retorno = new Banco();
                 retorno.setId(rs.getInt("ID"));
                 retorno.setNome(rs.getString("NOME"));
-                // Recuperar a Agencia correspondente pelo ID
-                int agenciaId = rs.getInt("AGENCIA_ID");
-                AgenciaDAO agenciaDAO = new AgenciaDAO();
-                Agencia agencia = agenciaDAO.findById(agenciaId);
-                retorno.setAgencia(agencia);
             }
         } finally {
             if (rs != null) {
@@ -106,7 +95,6 @@ public class BancoDAO {
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setInt(1, banco.getId());
             pstmt.setString(2, banco.getNome());
-            pstmt.setInt(3, banco.getAgencia().getId());
             pstmt.executeUpdate();
         } finally {
             if (conn != null) {
@@ -126,8 +114,7 @@ public class BancoDAO {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setString(1, banco.getNome());
-            pstmt.setInt(2, banco.getAgencia().getId());
-            pstmt.setInt(3, banco.getId());
+            pstmt.setInt(2, banco.getId());
             pstmt.executeUpdate();
         } finally {
             if (pstmt != null) {

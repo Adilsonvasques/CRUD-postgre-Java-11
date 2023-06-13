@@ -1,14 +1,24 @@
 package com.pccasa.unipar.central.models;
 public class Pessoa {
+    private Integer id;
     private String email;
     private String ra;
 
     public Pessoa() {
     }
 
-    public Pessoa(String email, String ra) {
+    public Pessoa(Integer id,String email, String ra) {
+        this.id = id;
         this.email = email;
         this.ra = ra;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

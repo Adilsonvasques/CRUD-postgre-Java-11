@@ -3,7 +3,6 @@ package com.pccasa.unipar.central.teste;
 import com.pccasa.unipar.central.Exceptions.CampoNaoInformadoException;
 import com.pccasa.unipar.central.Exceptions.EntidadeNaoInformadaException;
 import com.pccasa.unipar.central.Exceptions.TamanhoCampoInvalidoException;
-import com.pccasa.unipar.central.models.PessoaJuridica;
 import com.pccasa.unipar.central.services.PessoaJuridicaService;
 
 import java.sql.SQLException;

@@ -1,16 +1,19 @@
 package com.pccasa.unipar.central.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Transacao{
-    private Date dataHora;
+    private Integer id;
+    private Timestamp dataHora;
     private Double valor;
     private Integer tipo;
     private String ra;
     private Agencia agencia;
     private Pessoa pessoa;
 
-    public Transacao(Date dataHora, Double valor, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+    public Transacao(Integer id, Timestamp dataHora, Double valor, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+        this.id = id;
         this.dataHora = dataHora;
         this.valor = valor;
         this.tipo = tipo;
@@ -22,11 +25,19 @@ public class Transacao{
     public Transacao() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Date getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(Timestamp dataHora) {
         this.dataHora = dataHora;
     }
 

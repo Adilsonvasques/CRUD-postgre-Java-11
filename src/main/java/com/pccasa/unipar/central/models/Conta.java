@@ -2,6 +2,7 @@
 package com.pccasa.unipar.central.models;
 
 public class Conta {
+    private Integer id;
     private String numero;
     private String digito;
     private Double saldo;
@@ -13,7 +14,8 @@ public class Conta {
     public Conta() {
     }
 
-    public Conta(String numero, String digito, Double saldo, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+    public Conta(Integer id, String numero, String digito, Double saldo, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+        this.id = id;
         this.numero = numero;
         this.digito = digito;
         this.saldo = saldo;
@@ -21,6 +23,14 @@ public class Conta {
         this.ra = ra;
         this.agencia = agencia;
         this.pessoa = pessoa;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNumero() {

@@ -3,15 +3,12 @@ package com.pccasa.unipar.central.repositories;
 import com.pccasa.unipar.central.models.Transacao;
 import com.pccasa.unipar.central.utils.DataBaseUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TransacaoDAO {
-    private static final String INSERT = "INSERT INTO TRANSACAO(id, datahora, valor) " +
+    private static final String INSERT = "INSERT INTO TRANSACAO(datahora, valor) " +
             "VALUES(?, ?, ?)";
 
     private static final String FIND_ALL = "SELECT ID, DATAHORA, VALOR FROM TRANSACAO";
@@ -38,7 +35,6 @@ public class TransacaoDAO {
 
             while (rs.next()) {
                 Transacao transacao = new Transacao();
-                transacao.setId(rs.getInt("ID"));
                 transacao.setDataHora(rs.getTimestamp("DATAHORA"));
                 transacao.setValor(rs.getDouble("VALOR"));
                 retorno.add(transacao);
@@ -72,7 +68,6 @@ public class TransacaoDAO {
 
             while (rs.next()) {
                 retorno = new Transacao();
-                retorno.setId(rs.getInt("ID"));
                 retorno.setDataHora(rs.getTimestamp("DATAHORA"));
                 retorno.setValor(rs.getDouble("VALOR"));
             }
@@ -98,9 +93,8 @@ public class TransacaoDAO {
         try {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(INSERT);
-            pstmt.setInt(1, transacao.getId());
-            pstmt.setTimestamp(2, transacao.getDataHora());
-            pstmt.setDouble(3, transacao.getValor());
+            pstmt.setTimestamp(1, (Timestamp) transacao.getDataHora());
+            pstmt.setDouble(2, transacao.getValor());
             pstmt.executeUpdate();
         } finally {
             if (pstmt != null) {
@@ -119,9 +113,8 @@ public class TransacaoDAO {
         try {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
-            pstmt.setTimestamp(1, transacao.getDataHora());
+            pstmt.setTimestamp(1, (Timestamp) transacao.getDataHora());
             pstmt.setDouble(2, transacao.getValor());
-            pstmt.setInt(3, transacao.getId());
             pstmt.executeUpdate();
         } finally {
             if (pstmt != null) {

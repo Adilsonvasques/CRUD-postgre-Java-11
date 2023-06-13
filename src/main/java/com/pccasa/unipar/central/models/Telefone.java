@@ -1,6 +1,7 @@
 package com.pccasa.unipar.central.models;
 
 public class Telefone {
+    private Integer id;
     private String numero;
     private Integer operadora;
     private String ra;
@@ -11,12 +12,21 @@ public class Telefone {
         return numero;
     }
 
-    public Telefone(String numero, Integer operadora, String ra, Agencia agencia, Pessoa pessoa) {
+    public Telefone(Integer id, String numero, Integer operadora, String ra, Agencia agencia, Pessoa pessoa) {
+        this.id = id;
         this.numero = numero;
         this.operadora = operadora;
         this.ra = ra;
         this.agencia = agencia;
         this.pessoa = pessoa;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Telefone() {

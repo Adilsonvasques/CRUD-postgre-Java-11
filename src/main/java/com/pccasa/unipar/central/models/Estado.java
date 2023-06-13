@@ -2,6 +2,7 @@
 package com.pccasa.unipar.central.models;
 
 public class Estado {
+    private Integer id;
     private String nome;
     private String sigla;
     private String ra;
@@ -10,7 +11,8 @@ public class Estado {
     public Estado() {
     }
 
-    public Estado(String nome, String sigla, String ra, Pais pais) {
+    public Estado(Integer id, String nome, String sigla, String ra, Pais pais) {
+        this.id = id;
         this.nome = nome;
         this.sigla = sigla;
         this.ra = ra;
@@ -19,6 +21,14 @@ public class Estado {
 
     public String getNome() {
         return nome;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {

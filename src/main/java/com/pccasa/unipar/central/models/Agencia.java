@@ -1,6 +1,7 @@
 package com.pccasa.unipar.central.models;
 
 public class Agencia {
+    private Integer id;
     private String codigo;
     private String razaoSocial;
     private String cnpj;
@@ -11,12 +12,25 @@ public class Agencia {
     public Agencia() {
     }
 
-    public Agencia(String codigo, String razaoSocial, String cnpj, String ra, Banco banco) {
+    public Agencia(Integer id, String codigo, String razaoSocial, String cnpj, String ra, Banco banco) {
+        this.id = id;
         this.codigo = codigo;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.ra = ra;
         this.banco = banco;
+    }
+
+    public Agencia(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCodigo() {

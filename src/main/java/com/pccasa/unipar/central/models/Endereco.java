@@ -2,6 +2,7 @@
 package com.pccasa.unipar.central.models;
 
 public class Endereco {
+    private Integer id;
     private String logradouro;
     private String numero;
     private String bairro;
@@ -14,7 +15,8 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String numero, String bairro, String cep, String complemento, String ra, Agencia pessoa, Cidade cidade) {
+    public Endereco(Integer id, String logradouro, String numero, String bairro, String cep, String complemento, String ra, Agencia pessoa, Cidade cidade) {
+        this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
@@ -23,6 +25,14 @@ public class Endereco {
         this.ra = ra;
         this.pessoa = pessoa;
         this.cidade = cidade;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLogradouro() {

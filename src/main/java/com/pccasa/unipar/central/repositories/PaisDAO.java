@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pccasa.unipar.central.repositories;
 
 import com.pccasa.unipar.central.models.Pais;
@@ -13,23 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author eduar
- */
 public class PaisDAO {
-     private static final String INSERT = "INSERT INTO PAIS(id, nome, sigla, ra)" + 
+     private static final String INSERT = "INSERT INTO pais(id, nome, sigla, ra)" +
             "VALUES(?, ?, ?, ?)";
     
-    private static final String FIND_ALL = "SELECT ID, NOME, SIGLA, RA FROM PAIS";
+    private static final String FIND_ALL = "SELECT id, NOME, SIGLA, RA FROM pais";
     
     private static final String FIND_BY_ID = 
-            "SELECT ID, NOME, SIGLA, RA FROM PAIS WHERE ID = ?";
+            "SELECT id, NOME, SIGLA, RA FROM pais WHERE id = ?";
     
     private static final String DELETE_BY_ID = 
-            "DELETE FROM PAIS WHERE ID = ?";
+            "DELETE FROM pais WHERE ID = ?";
     
-    private static final String UPDATE = "UPDATE PAIS SET NOME = ?, SIGLA = ?, RA = ?" + 
+    private static final String UPDATE = "UPDATE pais SET NOME = ?, SIGLA = ?, RA = ?" +
             "WHERE ID = ?";
     
     public List<Pais> findAll() throws SQLException{
@@ -51,7 +43,7 @@ public class PaisDAO {
                 Pais pais = new Pais();//para utilizar para setar no arraylist de retorno
                 pais.setId(rs.getInt("ID"));//getInt - pq id é inteiro
                 pais.setNome(rs.getString("NOME"));
-                pais.setRegistroAcademico(rs.getString("RA"));
+                pais.setRa(rs.getString("RA"));
                 pais.setSigla(rs.getString("SIGLA"));
                 
                 retorno.add(pais);
@@ -96,7 +88,7 @@ public class PaisDAO {
                 retorno = new Pais();
                 retorno.setId(rs.getInt("ID"));
                 retorno.setNome(rs.getString("NOME"));
-                retorno.setRegistroAcademico(rs.getString("RA"));
+                retorno.setRa(rs.getString("RA"));
                 retorno.setSigla(rs.getString("SIGLA"));
             }
             
@@ -129,8 +121,8 @@ public class PaisDAO {
             pstmt.setInt(1, pais.getId());
             pstmt.setString(2, pais.getNome());
             pstmt.setString(3, pais.getSigla());
-            pstmt.setString(4, pais.getRegistroAcademico());
-            
+            pstmt.setString(4, pais.getRa());
+
             pstmt.executeUpdate();
             
         }finally{
@@ -156,7 +148,7 @@ public class PaisDAO {
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setString(1, pais.getNome());
             pstmt.setString(2, pais.getSigla());
-            pstmt.setString(3, pais.getRegistroAcademico());
+            pstmt.setString(3, pais.getRa());
             pstmt.setInt(4, pais.getId());
             
             pstmt.executeUpdate();

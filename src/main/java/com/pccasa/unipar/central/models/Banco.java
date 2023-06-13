@@ -1,12 +1,23 @@
 package com.pccasa.unipar.central.models;
 
 public class Banco {
+    private Integer id;
     private String  nome;
     private String ra;
 
-    public Banco(String nome, String ra) {
+    public Banco(Integer id, String nome, String ra) {
+        this.id = id;
         this.nome = nome;
         this.ra = ra;
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Banco() {
