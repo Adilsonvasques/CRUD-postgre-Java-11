@@ -1,41 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
 public class Endereco {
-     private int id;
     private String logradouro;
-    private int numero;
+    private String numero;
     private String bairro;
-    private int cep;
+    private String cep;
     private String complemento;
+    private String ra;;
+    private Agencia pessoa;
     private Cidade cidade;
 
     public Endereco() {
     }
 
-    public Endereco(int id, String logradouro, int numero, String bairro, int cep, String complemento, Cidade cidade) {
-        this.id = id;
+    public Endereco(String logradouro, String numero, String bairro, String cep, String complemento, String ra, Agencia pessoa, Cidade cidade) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
         this.cep = cep;
         this.complemento = complemento;
+        this.ra = ra;
+        this.pessoa = pessoa;
         this.cidade = cidade;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getLogradouro() {
@@ -46,11 +33,11 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -62,11 +49,11 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -78,13 +65,41 @@ public class Endereco {
         this.complemento = complemento;
     }
 
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public Agencia getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Agencia pessoa) {
+        this.pessoa = pessoa;
+    }
+
     public Cidade getCidade() {
         return cidade;
     }
 
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
 
     @Override
     public String toString() {
-        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", complemento=" + complemento + ", cidade=" + cidade + '}';
+        return "Endereco{" +
+                "logradouro='" + logradouro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", ra='" + ra + '\'' +
+                ", pessoa=" + pessoa +
+                ", cidade=" + cidade +
+                '}';
     }
 }

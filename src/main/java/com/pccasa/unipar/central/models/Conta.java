@@ -1,83 +1,74 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
 public class Conta {
-    private int id;
-    private String conta; 
-    private String agencia;
-    private String tipo;
-    private int digito;
-    private double saldo;
+    private String numero;
+    private String digito;
+    private Double saldo;
+    private Integer tipo;
+    private String ra;
+    private Agencia agencia;
     private Pessoa pessoa;
-    private Transacao transacao;
 
     public Conta() {
     }
 
-    public Conta(int id, String conta, String agencia, String tipo, int digito, double saldo, Pessoa pessoa, Transacao transacao) {
-        this.id = id;
-        this.conta = conta;
-        this.agencia = agencia;
-        this.tipo = tipo;
+    public Conta(String numero, String digito, Double saldo, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+        this.numero = numero;
         this.digito = digito;
         this.saldo = saldo;
-        this.pessoa = pessoa;
-        this.transacao = transacao;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getConta() {
-        return conta;
-    }
-
-    public void setConta(String conta) {
-        this.conta = conta;
-    }
-
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
         this.tipo = tipo;
+        this.ra = ra;
+        this.agencia = agencia;
+        this.pessoa = pessoa;
     }
 
-    public int getDigito() {
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getDigito() {
         return digito;
     }
 
-    public void setDigito(int digito) {
+    public void setDigito(String digito) {
         this.digito = digito;
     }
 
-    public double getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(Double saldo) {
         this.saldo = saldo;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
     public Pessoa getPessoa() {
@@ -88,16 +79,16 @@ public class Conta {
         this.pessoa = pessoa;
     }
 
-    public Transacao getTransacao() {
-        return transacao;
-    }
-
-    public void setTransacao(Transacao transacao) {
-        this.transacao = transacao;
-    }
-
     @Override
     public String toString() {
-        return "Conta{" + "id=" + id + ", conta=" + conta + ", agencia=" + agencia + ", tipo=" + tipo + ", digito=" + digito + ", saldo=" + saldo + ", pessoa=" + pessoa + ", transacao=" + transacao + '}';
+        return "Conta{" +
+                "numero='" + numero + '\'' +
+                ", digito='" + digito + '\'' +
+                ", saldo=" + saldo +
+                ", tipo=" + tipo +
+                ", ra='" + ra + '\'' +
+                ", agencia=" + agencia +
+                ", pessoa=" + pessoa +
+                '}';
     }
 }

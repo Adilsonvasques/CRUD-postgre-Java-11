@@ -1,55 +1,84 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pccasa.unipar.central.models;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
-/**
- *
- * @author eduar
- */
-public class Transacao extends AbstractBaseEntiny{
-      private String tipo;
-    private Timestamp dataHora;
-    private double valor;
+public class Transacao{
+    private Date dataHora;
+    private Double valor;
+    private Integer tipo;
+    private String ra;
+    private Agencia agencia;
+    private Pessoa pessoa;
+
+    public Transacao(Date dataHora, Double valor, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+        this.dataHora = dataHora;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.ra = ra;
+        this.agencia = agencia;
+        this.pessoa = pessoa;
+    }
 
     public Transacao() {
     }
 
-    public Transacao(String tipo, Timestamp dataHora, double valor) {
-        this.tipo = tipo;
-        this.dataHora = dataHora;
-        this.valor = valor;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Timestamp getDataHora() {
+    public Date getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Timestamp dataHora) {
+    public void setDataHora(Date dataHora) {
         this.dataHora = dataHora;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override
     public String toString() {
-        return "Transacao{" + "tipo=" + tipo + ", dataHora=" + dataHora + ", valor=" + valor + '}';
+        return "Transacao{" +
+                "dataHora=" + dataHora +
+                ", valor=" + valor +
+                ", tipo=" + tipo +
+                ", ra='" + ra + '\'' +
+                ", agencia=" + agencia +
+                ", pessoa=" + pessoa +
+                '}';
     }
 }

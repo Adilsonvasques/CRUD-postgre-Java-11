@@ -1,37 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
 public class Agencia {
-      private int id;
     private String codigo;
     private String razaoSocial;
     private String cnpj;
-    private Conta conta;
+    private String ra;
+
+    private Banco banco;
 
     public Agencia() {
     }
 
-    public Agencia(int id, String codigo, String razaoSocial, String cnpj, Conta conta) {
-        this.id = id;
+    public Agencia(String codigo, String razaoSocial, String cnpj, String ra, Banco banco) {
         this.codigo = codigo;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
-        this.conta = conta;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.ra = ra;
+        this.banco = banco;
     }
 
     public String getCodigo() {
@@ -58,16 +43,30 @@ public class Agencia {
         this.cnpj = cnpj;
     }
 
-    public Conta getConta() {
-        return conta;
+    public String getRa() {
+        return ra;
     }
 
-    public void setConta(Conta conta) {
-        this.conta = conta;
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public Banco getBanco() {
+        return banco;
+    }
+
+    public void setBanco(Banco banco) {
+        this.banco = banco;
     }
 
     @Override
     public String toString() {
-        return "Agencia{" + "id=" + id + ", codigo=" + codigo + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", conta=" + conta + '}';
+        return "Agencia{" +
+                "codigo='" + codigo + '\'' +
+                ", razaoSocial='" + razaoSocial + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", ra='" + ra + '\'' +
+                ", banco=" + banco +
+                '}';
     }
 }

@@ -1,35 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
 public class PessoaJuridica extends Pessoa{
-     private String cnpj;
+
     private String razaoSocial;
-    private String cnaePrincipal;
+    private String cnpj;
+    private String cnaPrincipal;
     private String fantasia;
+    private Pessoa pessoa;
 
     public PessoaJuridica() {
     }
 
-    public PessoaJuridica(String cnpj, String razaoSocial, String cnaePrincipal, String fantasia) {
-        this.cnpj = cnpj;
+    public PessoaJuridica(String razaoSocial, String cnpj, String cnaPrincipal, String fantasia, Pessoa pessoa) {
         this.razaoSocial = razaoSocial;
-        this.cnaePrincipal = cnaePrincipal;
-        this.fantasia = fantasia;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+        this.cnaPrincipal = cnaPrincipal;
+        this.fantasia = fantasia;
+        this.pessoa = pessoa;
     }
 
     public String getRazaoSocial() {
@@ -40,12 +27,20 @@ public class PessoaJuridica extends Pessoa{
         this.razaoSocial = razaoSocial;
     }
 
-    public String getCnaePrincipal() {
-        return cnaePrincipal;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCnaePrincipal(String cnaePrincipal) {
-        this.cnaePrincipal = cnaePrincipal;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getCnaPrincipal() {
+        return cnaPrincipal;
+    }
+
+    public void setCnaPrincipal(String cnaPrincipal) {
+        this.cnaPrincipal = cnaPrincipal;
     }
 
     public String getFantasia() {
@@ -56,8 +51,22 @@ public class PessoaJuridica extends Pessoa{
         this.fantasia = fantasia;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     @Override
     public String toString() {
-        return "PessoaJuridica{" + "cnpj=" + cnpj + ", razaoSocial=" + razaoSocial + ", cnaePrincipal=" + cnaePrincipal + ", fantasia=" + fantasia + '}';
+        return "PessoaJuridica{" +
+                "razaoSocial='" + razaoSocial + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", cnaPrincipal='" + cnaPrincipal + '\'' +
+                ", fantasia='" + fantasia + '\'' +
+                ", pessoa=" + pessoa +
+                '}';
     }
 }

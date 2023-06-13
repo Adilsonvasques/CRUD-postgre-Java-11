@@ -1,35 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
 public class Estado {
-      private int id;
     private String nome;
     private String sigla;
+    private String ra;
     private Pais pais;
 
     public Estado() {
     }
 
-    public Estado(int id, String nome, String sigla, Pais pais) {
-        this.id = id;
+    public Estado(String nome, String sigla, String ra, Pais pais) {
         this.nome = nome;
         this.sigla = sigla;
+        this.ra = ra;
         this.pais = pais;
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -48,6 +33,14 @@ public class Estado {
         this.sigla = sigla;
     }
 
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
     public Pais getPais() {
         return pais;
     }
@@ -58,6 +51,11 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" + "id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", pais=" + pais + '}';
-    } 
+        return "Estado{" +
+                "nome='" + nome + '\'' +
+                ", sigla='" + sigla + '\'' +
+                ", ra='" + ra + '\'' +
+                ", pais=" + pais +
+                '}';
+    }
 }

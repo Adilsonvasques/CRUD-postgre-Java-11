@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pccasa.unipar.central.models;
 
-/**
- *
- * @author eduar
- */
-public class Pais extends AbstractBaseEntiny {
-     private String nome;
+public class Pais {
+    private String nome;
     private String sigla;
+    private String ra;
 
     public Pais() {
-        
     }
 
-    public Pais(String nome, String sigla) {
+    public Pais(String nome, String sigla, String ra) {
         this.nome = nome;
         this.sigla = sigla;
-    }    
+        this.ra = ra;
+    }
 
     public String getNome() {
         return nome;
@@ -37,8 +30,20 @@ public class Pais extends AbstractBaseEntiny {
         this.sigla = sigla;
     }
 
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
     @Override
     public String toString() {
-        return "Pais{" + "id=" + super.getId() + "ra=" + super.getRegistroAcademico() + "nome=" + nome + ", sigla=" + sigla + '}';
+        return "Pais{" +
+                "nome='" + nome + '\'' +
+                ", sigla='" + sigla + '\'' +
+                ", ra='" + ra + '\'' +
+                '}';
     }
 }
