@@ -12,20 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EstadoDAO {
-    private static final String INSERT = "INSERT INTO ESTADO(id, nome, sigla, pais_id)" +
-            "VALUES(?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO ESTADO(id, nome, sigla, ra, pais_id)" +
+            "VALUES(?, ?, ?, ?, ?)";
 
-    private static final String FIND_ALL = "SELECT e.ID, e.NOME, e.SIGLA, p.ID AS PAIS_ID, p.NOME AS PAIS_NOME " +
+    private static final String FIND_ALL = "SELECT e.ID, e.NOME, e.SIGLA, e.RA, p.ID AS PAIS_ID, p.NOME AS PAIS_NOME " +
             "FROM ESTADO e INNER JOIN PAIS p ON e.PAIS_ID = p.ID";
 
     private static final String FIND_BY_ID =
-            "SELECT e.ID, e.NOME, e.SIGLA, p.ID AS PAIS_ID, p.NOME AS PAIS_NOME " +
+            "SELECT e.ID, e.NOME, e.SIGLA, e.RA, p.ID AS PAIS_ID, p.NOME AS PAIS_NOME " +
                     "FROM ESTADO e INNER JOIN PAIS p ON e.PAIS_ID = p.ID WHERE e.ID = ?";
 
     private static final String DELETE_BY_ID =
             "DELETE FROM ESTADO WHERE ID = ?";
 
-    private static final String UPDATE = "UPDATE ESTADO SET NOME = ?, SIGLA = ?, PAIS_ID = ? " +
+    private static final String UPDATE = "UPDATE ESTADO SET NOME = ?, SIGLA = ?, RA = ?, PAIS_ID = ? " +
             "WHERE ID = ?";
 
     public List<Estado> findAll() throws SQLException {
@@ -48,6 +48,7 @@ public class EstadoDAO {
                 estado.setId(rs.getInt("ID"));//getInt - pq id é inteiro
                 estado.setNome(rs.getString("NOME"));
                 estado.setSigla(rs.getString("SIGLA"));
+                estado.setRa(rs.getString("RA"));
 
                 Pais pais = new Pais();
                 pais.setId(rs.getInt("PAIS_ID"));
@@ -98,6 +99,7 @@ public class EstadoDAO {
                 retorno.setId(rs.getInt("ID"));//getInt - pq id é inteiro
                 retorno.setNome(rs.getString("NOME"));
                 retorno.setSigla(rs.getString("SIGLA"));
+                retorno.setRa(rs.getString("RA"));
 
                 Pais pais = new Pais();
                 pais.setId(rs.getInt("PAIS_ID"));
@@ -135,7 +137,8 @@ public class EstadoDAO {
             pstmt.setInt(1, estado.getId());
             pstmt.setString(2, estado.getNome());
             pstmt.setString(3, estado.getSigla());
-            pstmt.setInt(4, estado.getPais().getId());
+            pstmt.setString(4, estado.getRa());
+            pstmt.setInt(5, estado.getPais().getId());
 
             pstmt.executeUpdate();
 
@@ -160,10 +163,11 @@ public class EstadoDAO {
 
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
-            pstmt.setString(1, estado.getNome());
-            pstmt.setString(2, estado.getSigla());
-            pstmt.setInt(3, estado.getPais().getId());
-            pstmt.setInt(4, estado.getId());
+            pstmt.setString(1, estado.getRa());
+            pstmt.setString(2, estado.getNome());
+            pstmt.setString(3, estado.getSigla());
+            pstmt.setInt(4, estado.getPais().getId());
+            pstmt.setInt(5, estado.getId());
 
             pstmt.executeUpdate();
 

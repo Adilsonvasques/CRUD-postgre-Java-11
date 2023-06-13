@@ -12,21 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CidadeDAO {
-    private static final String INSERT = "INSERT INTO CIDADE(id, nome, estado_id)" +
-            "VALUES(?, ?, ?)";
+    private static final String INSERT = "INSERT INTO cidade(id, nome, ra, estado_id)" +
+            " VALUES(?, ?, ?, ?)";
 
-    private static final String FIND_ALL = "SELECT c.ID, c.NOME, e.ID AS ESTADO_ID, e.NOME AS ESTADO_NOME " +
+    private static final String FIND_ALL = "SELECT c.ID, c.NOME, c.RA, e.ID AS ESTADO_ID, e.NOME AS ESTADO_NOME " +
             "FROM CIDADE c INNER JOIN ESTADO e ON c.ESTADO_ID = e.ID";
 
     private static final String FIND_BY_ID =
-            "SELECT c.ID, c.NOME, e.ID AS ESTADO_ID, e.NOME AS ESTADO_NOME " +
-                    "FROM CIDADE c INNER JOIN ESTADO e ON c.ESTADO_ID = e.ID WHERE c.ID = ?";
+            "SELECT c.ID, c.NOME, c.RA, e.ID AS ESTADO_ID, e.NOME AS ESTADO_NOME " +
+                    "FROM cidade c INNER JOIN ESTADO e ON c.ESTADO_ID = e.ID WHERE c.ID = ?";
 
     private static final String DELETE_BY_ID =
-            "DELETE FROM CIDADE WHERE ID = ?";
+            "DELETE FROM cidade WHERE ID = ?";
 
-    private static final String UPDATE = "UPDATE CIDADE SET NOME = ?, ESTADO_ID = ?" +
-            "WHERE ID = ?";
+    private static final String UPDATE = "UPDATE cidade SET NOME = ?, RA = ?, ESTADO_ID = ?" +
+            " WHERE ID = ?";
 
     public List<Cidade> findAll() throws SQLException {
         List<Cidade> retorno = new ArrayList<>();
@@ -43,6 +43,7 @@ public class CidadeDAO {
                 Cidade cidade = new Cidade();
                 cidade.setId(rs.getInt("ID"));
                 cidade.setNome(rs.getString("NOME"));
+                cidade.setRa(rs.getString("RA"));
 
                 Estado estado = new Estado();
                 estado.setId(rs.getInt("ESTADO_ID"));
@@ -84,6 +85,7 @@ public class CidadeDAO {
                 retorno = new Cidade();
                 retorno.setId(rs.getInt("ID"));
                 retorno.setNome(rs.getString("NOME"));
+                retorno.setRa(rs.getString("RA"));
 
                 Estado estado = new Estado();
                 estado.setId(rs.getInt("ESTADO_ID"));
@@ -113,7 +115,8 @@ public class CidadeDAO {
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setInt(1, cidade.getId());
             pstmt.setString(2, cidade.getNome());
-            pstmt.setInt(3, cidade.getEstado().getId());
+            pstmt.setString(3, cidade.getRa());
+            pstmt.setInt(4, cidade.getEstado().getId());
 
             pstmt.executeUpdate();
         } finally {
@@ -131,9 +134,10 @@ public class CidadeDAO {
         try {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
-            pstmt.setString(1, cidade.getNome());
-            pstmt.setInt(2, cidade.getEstado().getId());
-            pstmt.setInt(3, cidade.getId());
+            pstmt.setString(1, cidade.getRa());
+            pstmt.setString(2, cidade.getNome());
+            pstmt.setInt(3, cidade.getEstado().getId());
+            pstmt.setInt(4, cidade.getId());
 
             pstmt.executeUpdate();
         } finally {

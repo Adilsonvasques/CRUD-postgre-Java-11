@@ -110,7 +110,7 @@ public class EnderecoDAO {
             pstmt.setString(2, endereco.getLogradouro());
             pstmt.setString(3, endereco.getNumero());
             pstmt.setString(4, endereco.getBairro());
-            pstmt.setString(5, String.valueOf(endereco.getCep())); // Convertendo para String
+            pstmt.setString(5, endereco.getCep());
             pstmt.setString(6, endereco.getComplemento());
 
             pstmt.executeUpdate();

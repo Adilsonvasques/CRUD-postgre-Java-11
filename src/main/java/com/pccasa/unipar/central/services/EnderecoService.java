@@ -24,7 +24,7 @@ public class EnderecoService {
             throw new TamanhoCampoInvalidoException("Logradouro", 100);
         }
 
-        if (endereco.getNumero() <= 0) {
+        if (endereco.getNumero() != null) {
             throw new TamanhoCampoInvalidoException("Número", 1);
         }
 
@@ -36,7 +36,7 @@ public class EnderecoService {
             throw new TamanhoCampoInvalidoException("Bairro", 100);
         }
 
-        if (endereco.getCep() <= 0) {
+        if (endereco.getCep() != null) {
             throw new TamanhoCampoInvalidoException("CEP", 1);
         }
 

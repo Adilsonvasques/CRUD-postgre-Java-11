@@ -9,17 +9,17 @@ public class Transacao{
     private Double valor;
     private Integer tipo;
     private String ra;
-    private Agencia agencia;
-    private Pessoa pessoa;
+    private Integer agenciaId;
+    private Integer pessoaId;
 
-    public Transacao(Integer id, Timestamp dataHora, Double valor, Integer tipo, String ra, Agencia agencia, Pessoa pessoa) {
+    public Transacao(Integer id, Timestamp dataHora, Double valor, Integer tipo, String ra, Integer agenciaId, Integer pessoaId) {
         this.id = id;
         this.dataHora = dataHora;
         this.valor = valor;
         this.tipo = tipo;
         this.ra = ra;
-        this.agencia = agencia;
-        this.pessoa = pessoa;
+        this.agenciaId = agenciaId;
+        this.pessoaId = pessoaId;
     }
 
     public Transacao() {
@@ -65,20 +65,20 @@ public class Transacao{
         this.ra = ra;
     }
 
-    public Agencia getAgencia() {
-        return agencia;
+    public Integer getAgenciaId() {
+        return agenciaId;
     }
 
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
+    public void setAgenciaId(Integer agenciaId) {
+        this.agenciaId = agenciaId;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Integer getPessoaId() {
+        return pessoaId;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoaId(Integer pessoaId) {
+        this.pessoaId = pessoaId;
     }
 
     @Override
@@ -88,8 +88,8 @@ public class Transacao{
                 ", valor=" + valor +
                 ", tipo=" + tipo +
                 ", ra='" + ra + '\'' +
-                ", agencia=" + agencia +
-                ", pessoa=" + pessoa +
+                ", agencia=" + agenciaId +
+                ", pessoa=" + agenciaId +
                 '}';
     }
 }

@@ -32,16 +32,12 @@ public class PaisDAO {
         ResultSet rs = null;
         
         try{
-            
             conn = new DataBaseUtils().getConnection();
-            
             pstmt = conn.prepareStatement(FIND_ALL);
-            
-            rs = pstmt.executeQuery();//executa FIND_ALL, retorna o resultado
-            
-            while(rs.next()){//enquanto não acabar
+            rs = pstmt.executeQuery();
+            while(rs.next()){
                 Pais pais = new Pais();//para utilizar para setar no arraylist de retorno
-                pais.setId(rs.getInt("ID"));//getInt - pq id é inteiro
+                pais.setId(rs.getInt("ID"));
                 pais.setNome(rs.getString("NOME"));
                 pais.setRa(rs.getString("RA"));
                 pais.setSigla(rs.getString("SIGLA"));
@@ -50,7 +46,6 @@ public class PaisDAO {
             }
             
         }finally{
-            
             if(rs != null){
                 rs.close();
             }
@@ -62,7 +57,6 @@ public class PaisDAO {
             if(conn != null){
                 conn.close();
             }
-            
         }
         
         return retorno;
@@ -75,13 +69,10 @@ public class PaisDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Pais retorno = null;
-        
         try{
-            
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(FIND_BY_ID);
             pstmt.setInt(1, id);
-            
             rs = pstmt.executeQuery();
             
             while(rs.next()){
@@ -96,68 +87,51 @@ public class PaisDAO {
             
             if(rs != null)
                 rs.close();
-            
+
             if(pstmt != null)
                 pstmt.close();
-            
+
             if(conn != null)
                 conn.close();
-            
         }
-        
         return retorno;
-        
     }
     
     public void insert(Pais pais) throws SQLException{
-        
         Connection conn = null;
         PreparedStatement pstmt = null;
-        
         try{
-            
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setInt(1, pais.getId());
             pstmt.setString(2, pais.getNome());
             pstmt.setString(3, pais.getSigla());
             pstmt.setString(4, pais.getRa());
-
             pstmt.executeUpdate();
             
         }finally{
-            
             if(conn != null)
                 conn.close();
             
             if(pstmt != null)
                 pstmt.close();
-            
         }
-        
     }
     
     public void update(Pais pais) throws SQLException{
-        
         Connection conn = null;
         PreparedStatement pstmt = null;
-        
         try{
-            
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setString(1, pais.getNome());
             pstmt.setString(2, pais.getSigla());
             pstmt.setString(3, pais.getRa());
             pstmt.setInt(4, pais.getId());
-            
             pstmt.executeUpdate();
-            
         }finally{
-            
            if(pstmt != null)
               pstmt.close();
-           
            if(conn != null)
                conn.close();
             
@@ -166,19 +140,14 @@ public class PaisDAO {
     }
     
     public void delete(int id) throws SQLException{
-        
         Connection conn = null;
         PreparedStatement pstmt = null;
-        
         try{
-            
         conn = new DataBaseUtils().getConnection();
         pstmt = conn.prepareStatement(DELETE_BY_ID);
-        
         pstmt.executeUpdate();
             
         }finally{
-            
            if(pstmt != null)
               pstmt.close();
            

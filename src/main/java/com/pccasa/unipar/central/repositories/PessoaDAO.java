@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PessoaDAO {
-    private static final String INSERT = "INSERT INTO PESSOA(id, email) VALUES (?, ?)";
-    private static final String FIND_ALL = "SELECT id, email FROM PESSOA";
-    private static final String FIND_BY_ID = "SELECT id, email FROM PESSOA WHERE id = ?";
+    private static final String INSERT = "INSERT INTO PESSOA(id, email, ra) VALUES (?, ?, ?)";
+    private static final String FIND_ALL = "SELECT id, email, ra FROM PESSOA";
+    private static final String FIND_BY_ID = "SELECT id, email, ra FROM PESSOA WHERE id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM PESSOA WHERE id = ?";
     private static final String UPDATE = "UPDATE PESSOA SET email = ? WHERE id = ?";
 
@@ -32,6 +32,7 @@ public class PessoaDAO {
                 Pessoa pessoa = new Pessoa();
                 pessoa.setId(rs.getInt("id"));
                 pessoa.setEmail(rs.getString("email"));
+                pessoa.setRa(rs.getString("ra"));
                 retorno.add(pessoa);
             }
         } finally {
@@ -65,6 +66,7 @@ public class PessoaDAO {
                 retorno = new Pessoa();
                 retorno.setId(rs.getInt("id"));
                 retorno.setEmail(rs.getString("email"));
+                retorno.setRa(rs.getString("rs"));
             }
         } finally {
             if (rs != null) {
@@ -90,6 +92,7 @@ public class PessoaDAO {
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setInt(1, pessoa.getId());
             pstmt.setString(2, pessoa.getEmail());
+            pstmt.setString(3, pessoa.getRa());
             pstmt.executeUpdate();
         } finally {
             if (conn != null) {

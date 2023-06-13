@@ -5,20 +5,20 @@ public class Telefone {
     private String numero;
     private Integer operadora;
     private String ra;
-    private Agencia agencia;
-    private Pessoa pessoa;
+    private Integer agenciaId;
+    private Integer pessoaId;
 
     public String getNumero() {
         return numero;
     }
 
-    public Telefone(Integer id, String numero, Integer operadora, String ra, Agencia agencia, Pessoa pessoa) {
+    public Telefone(Integer id, String numero, Integer operadora, String ra, Integer agenciaId, Integer pessoaId) {
         this.id = id;
         this.numero = numero;
         this.operadora = operadora;
         this.ra = ra;
-        this.agencia = agencia;
-        this.pessoa = pessoa;
+        this.agenciaId = agenciaId;
+        this.pessoaId = pessoaId;
     }
 
     public Integer getId() {
@@ -52,20 +52,20 @@ public class Telefone {
         this.ra = ra;
     }
 
-    public Agencia getAgencia() {
-        return agencia;
+    public Integer getAgenciaId() {
+        return agenciaId;
     }
 
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
+    public void setAgenciaId(Integer agenciaId) {
+        this.agenciaId = agenciaId;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Integer getPessoaId() {
+        return pessoaId;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoaId(Integer pessoaId) {
+        this.pessoaId = pessoaId;
     }
 
     @Override
@@ -74,8 +74,8 @@ public class Telefone {
                 "numero='" + numero + '\'' +
                 ", operadora=" + operadora +
                 ", ra='" + ra + '\'' +
-                ", agencia=" + agencia +
-                ", pessoa=" + pessoa +
+                ", agencia=" + agenciaId +
+                ", pessoa=" + pessoaId +
                 '}';
     }
 }

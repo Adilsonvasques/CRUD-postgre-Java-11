@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TelefoneDAO {
-    private static final String INSERT = "INSERT INTO TELEFONE(id, numero) " +
-            "VALUES(?, ?)";
+    private static final String INSERT = "INSERT INTO telefone(numero, operadora, ra, agencia_id, pessoa_id) " +
+            "VALUES(?, ?, ?, ?, ?)";
 
-    private static final String FIND_ALL = "SELECT ID, NUMERO FROM TELEFONE";
+    private static final String FIND_ALL = "SELECT id, numero, operadora, ra, agencia_id, pessoa_id FROM telefone";
 
     private static final String FIND_BY_ID =
-            "SELECT ID, NUMERO FROM TELEFONE WHERE ID = ?";
+            "SELECT id, numero, operadora, ra, agencia_id, pessoa_id FROM telefone WHERE id = ?";
 
     private static final String DELETE_BY_ID =
-            "DELETE FROM TELEFONE WHERE ID = ?";
+            "DELETE FROM telefone WHERE id = ?";
 
-    private static final String UPDATE = "UPDATE TELEFONE SET NUMERO = ? " +
-            "WHERE ID = ?";
+    private static final String UPDATE = "UPDATE telefone SET numero = ?, operadora = ?, ra = ?, agencia_id = ?, pessoa_id = ? " +
+            "WHERE id = ?";
 
     public List<Telefone> findAll() throws SQLException {
         List<Telefone> retorno = new ArrayList<>();
@@ -38,8 +38,12 @@ public class TelefoneDAO {
 
             while (rs.next()) {
                 Telefone telefone = new Telefone();
-                telefone.setId(rs.getInt("ID"));
-                telefone.setNumero(rs.getString("NUMERO"));
+                telefone.setId(rs.getInt("id"));
+                telefone.setNumero(rs.getString("numero"));
+                telefone.setOperadora(rs.getInt("operadora"));
+                telefone.setRa(rs.getString("ra"));
+                telefone.setAgenciaId(rs.getInt("agencia_id"));
+                telefone.setPessoaId(rs.getInt("pessoa_id"));
                 retorno.add(telefone);
             }
         } finally {
@@ -71,8 +75,12 @@ public class TelefoneDAO {
 
             while (rs.next()) {
                 retorno = new Telefone();
-                retorno.setId(rs.getInt("ID"));
-                retorno.setNumero(rs.getString("NUMERO"));
+                retorno.setId(rs.getInt("id"));
+                retorno.setNumero(rs.getString("numero"));
+                retorno.setOperadora(rs.getInt("operadora"));
+                retorno.setRa(rs.getString("ra"));
+                retorno.setAgenciaId(rs.getInt("agencia_id"));
+                retorno.setPessoaId(rs.getInt("pessoa_id"));
             }
         } finally {
             if (rs != null) {
@@ -96,8 +104,11 @@ public class TelefoneDAO {
         try {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(INSERT);
-            pstmt.setInt(1, telefone.getId());
-            pstmt.setString(2, telefone.getNumero());
+            pstmt.setString(1, telefone.getNumero());
+            pstmt.setInt(2, telefone.getOperadora());
+            pstmt.setString(3, telefone.getRa());
+            pstmt.setInt(4, telefone.getAgenciaId());
+            pstmt.setInt(5, telefone.getPessoaId());
             pstmt.executeUpdate();
         } finally {
             if (pstmt != null) {
@@ -117,7 +128,11 @@ public class TelefoneDAO {
             conn = new DataBaseUtils().getConnection();
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setString(1, telefone.getNumero());
-            pstmt.setInt(2, telefone.getId());
+            pstmt.setInt(2, telefone.getOperadora());
+            pstmt.setString(3, telefone.getRa());
+            pstmt.setInt(4, telefone.getAgenciaId());
+            pstmt.setInt(5, telefone.getPessoaId());
+            pstmt.setInt(6, telefone.getId());
             pstmt.executeUpdate();
         } finally {
             if (pstmt != null) {
