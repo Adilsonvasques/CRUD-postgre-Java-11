@@ -47,7 +47,6 @@ public class AgenciaService {
             throw new TamanhoCampoInvalidoException("CNPJ", 14);
         }
 
-        // Adicione aqui as demais validações necessárias de acordo com suas regras de negócio
     }
 
     public List<Agencia> findAll() throws SQLException {
@@ -79,7 +78,7 @@ public class AgenciaService {
             CampoNaoInformadoException,
             TamanhoCampoInvalidoException {
 
-        validar(agencia);//validar todas as exceções
+        validar(agencia);
         AgenciaDAO agenciaDAO = new AgenciaDAO();
         agenciaDAO.insert(agencia);
 
